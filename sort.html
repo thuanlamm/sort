@@ -1,10 +1,10 @@
-	
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>Sort</title>
         <script type="text/javascript" src="./insertionsort.js"></script>
+        <script type="text/javascript" src="./quicksort.js"></script>
     </head>
     <body>
         <div>
@@ -12,16 +12,34 @@
         </div>
         <script>
         	var data = [];
-        	var time = [];
-        	var n = 5;
-        	data = generateData(n)
-            data[0]=5;
-            data[1]=4;
-            data[2]=2;
-            data[3]=3;
-            data[4]=1;
-        	insertionSort(data, time, n);
-        	show(data, time, n);
+        	var data2 = [];
+            var timeInsertionSort = [];
+            var timeQuickSort = [];
+        	var n = 5000;
+            var delta;
+            var st;
+        	data = generateRandomData(n);
+            //data = generateReversedData(n);
+            //data = generateSortedData(n);
+            for (i = 0; i < n; i++)
+                st = st + ' ' + data[i];
+            console.log('Data = ' + st);
+
+            
+            for (i = 0; i <= n; i+=500) {
+                data2 = data.slice();
+                delta = insertionSort(data2, i);             
+                timeInsertionSort.push(delta);
+                console.log('insert i=' + i + ' @' + delta);
+            }
+            for (i = 0; i <= n; i+=500) {
+                data2 = data.slice();
+                delta = quickSort(data2, i);
+                timeQuickSort.push(delta);
+                console.log('quick i=' + i + ' @' + delta);
+            }
+            //show(data, timeInsertionSort, timeQuickSort, n);
+            console.log('done');
         </script>
     </body>
 </html>
