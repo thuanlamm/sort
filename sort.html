@@ -1,0 +1,27 @@
+	
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sort</title>
+        <script type="text/javascript" src="./insertionsort.js"></script>
+    </head>
+    <body>
+        <div>
+            <canvas id="panel1" tabindex="1" width="500" height="300" style="border: 1px solid brown; backgrou: gray"></canvas>
+        </div>
+        <script>
+        	var data = [];
+        	var time = [];
+        	var n = 5;
+        	data = generateData(n)
+            data[0]=5;
+            data[1]=4;
+            data[2]=2;
+            data[3]=3;
+            data[4]=1;
+        	insertionSort(data, time, n);
+        	show(data, time, n);
+        </script>
+    </body>
+</html>
