@@ -1,8 +1,12 @@
 quickSort = (data, n) ->
     starting = (new Date()).getTime()
+    starting2 = window.performance.now()
     doQuickSort(data, 0, n - 1)
     now = (new Date()).getTime()
-    return now - starting
+    now2 = window.performance.now()
+    delta = now2 - starting2
+    # console.log 'q'+ n + ' @' + delta
+    return delta
 
 doQuickSort = (data, iStart, iEnd) ->
     if iStart < iEnd
@@ -23,6 +27,6 @@ quickSortPartition = (data, iStart, iEnd) ->
     for i in [iStart+1..iEnd]
         if data[i] < d
             iEndOfLeftList++
-            swap(data, iEndOfLeftList, i) 
+            swap(data, iEndOfLeftList, i)
     swap(data, iStart, iEndOfLeftList)
     return iEndOfLeftList

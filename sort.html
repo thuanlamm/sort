@@ -1,45 +1,86 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Sort</title>
+        <script type="text/javascript">
+            window.onload = function () {
+                var inputData = [];
+                var inputData2 = [];
+                var insertionSortResult = [];
+                var quickSortResult = [];
+                var n = 8000;
+                var delta;
+
+                inputData = generateRandomData(n);
+                //inputData = generateReversedData(n);
+                //inputData = generateSortedData(n);
+                insertionSortResult = [];
+                quickSortResult = [];
+
+                for (i = 0; i <= n; i+=1000) {
+                    inputData2 = inputData.slice();
+                    var delta = insertionSort(inputData2, i);
+                    insertionSortResult.push({ x: i, y: delta});
+                    inputData2 = inputData.slice();
+                    var delta2 = quickSort(inputData2, i);
+                    quickSortResult.push({ x: i, y: delta2});
+                    //console.log('input2b = ' + inputData2);
+                    //console.log('n=' + i + ' i@' + delta + ' q@' + delta2);
+                }
+
+                var chart = new buildChart("RunningTimeRandomData", "Running Time w/ Random Data", insertionSortResult, quickSortResult);
+                chart.render();
+
+                //inputData = generateRandomData(n);
+                inputData = generateReversedData(n);
+                //inputData = generateSortedData(n);
+                insertionSortResult = [];
+                quickSortResult = [];
+
+                for (i = 0; i <= n; i+=1000) {
+                    inputData2 = inputData.slice();
+                    insertionSortResult.push({ x: i, y: insertionSort(inputData2, i)});
+
+                    inputData2 = inputData.slice();
+                    quickSortResult.push({ x: i, y: quickSort(inputData2, i)});
+                }
+
+                var chart = new buildChart("RunningTimeReversedData", "Running Time w/ Reversed Data", insertionSortResult, quickSortResult);
+                chart.render();
+
+                //inputData = generateRandomData(n);
+                //inputData = generateReversedData(n);
+                inputData = generateSortedData(n);
+                insertionSortResult = [];
+                quickSortResult = [];
+
+                for (i = 0; i <= n; i+=1000) {
+                    inputData2 = inputData.slice();
+                    insertionSortResult.push({ x: i, y: insertionSort(inputData2, i)});
+
+                    inputData2 = inputData.slice();
+                    quickSortResult.push({ x: i, y: quickSort(inputData2, i)});
+                }
+
+                var chart = new buildChart("RunningTimeSortedData", "Running Time w/ Sorted Data", insertionSortResult, quickSortResult);
+                chart.render();
+
+            }
+        </script>
         <script type="text/javascript" src="./insertionsort.js"></script>
         <script type="text/javascript" src="./quicksort.js"></script>
+          <script type="text/javascript" src="./buildchart.js"></script>
+        <script type="text/javascript" src="./canvasjs.min.js"></script>
+
+        <title>CanvasJS Example</title>
+        <meta charset="utf-8">
+        <title>Sort</title>
     </head>
     <body>
-        <div>
-            <canvas id="panel1" tabindex="1" width="500" height="300" style="border: 1px solid brown; backgrou: gray"></canvas>
-        </div>
-        <script>
-        	var data = [];
-        	var data2 = [];
-            var timeInsertionSort = [];
-            var timeQuickSort = [];
-        	var n = 5000;
-            var delta;
-            var st;
-        	data = generateRandomData(n);
-            //data = generateReversedData(n);
-            //data = generateSortedData(n);
-            for (i = 0; i < n; i++)
-                st = st + ' ' + data[i];
-            console.log('Data = ' + st);
 
-            
-            for (i = 0; i <= n; i+=500) {
-                data2 = data.slice();
-                delta = insertionSort(data2, i);             
-                timeInsertionSort.push(delta);
-                console.log('insert i=' + i + ' @' + delta);
-            }
-            for (i = 0; i <= n; i+=500) {
-                data2 = data.slice();
-                delta = quickSort(data2, i);
-                timeQuickSort.push(delta);
-                console.log('quick i=' + i + ' @' + delta);
-            }
-            //show(data, timeInsertionSort, timeQuickSort, n);
-            console.log('done');
-        </script>
+        <div id="RunningTimeRandomData" style="width: 45%; height: 300px;display: inline-block;"></div>
+        <div id="RunningTimeReversedData" style="width: 45%; height: 300px;display: inline-block;"></div>
+        <br/>
+        <div id="RunningTimeSortedData" style="width: 45%; height: 300px;display: inline-block;"></div>
+
     </body>
 </html>
