@@ -1,17 +1,18 @@
+memCount = 0
+
 quickSort = (data, n) ->
-    starting = (new Date()).getTime()
-    starting2 = window.performance.now()
+    memCount = n
+    starting = window.performance.now()
     doQuickSort(data, 0, n - 1)
-    now = (new Date()).getTime()
-    now2 = window.performance.now()
-    delta = now2 - starting2
-    # console.log 'q'+ n + ' @' + delta
-    return delta
+    now = window.performance.now()
+    return now - starting
 
 doQuickSort = (data, iStart, iEnd) ->
     if iStart < iEnd
         iPivot = quickSortPartition(iStart, iEnd)
+        memCount += memCount
         doQuickSort(data, iStart, iPivot - 1)
+        memCount += memCount
         doQuickSort(data, iPivot + 1, iEnd)
 
 swap = (data, i, j) ->

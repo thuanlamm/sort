@@ -17,7 +17,7 @@ generateSortedData = (n) ->
     return rv
 
 insertionSort = (data, n) ->
-    starting = (new Date()).getTime()
+    starting = window.performance.now();
     for i in [1..n-1]
         j = i - 1
         value = data[i]
@@ -25,10 +25,8 @@ insertionSort = (data, n) ->
             data[j+1] = data[j]
             j = j-1
         data[j+1]=value
-        now = (new Date()).getTime()
-        delta = now - starting
-        # console.log 'i'+ n + ' @' + delta
-    return delta
+    now = window.performance.now();
+    return now - starting
 
 show = (data, time1, time2, n) ->
     for i in [0..n-1]

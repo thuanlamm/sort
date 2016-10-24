@@ -1,4 +1,4 @@
-buildChart = function(theID, theTitle, theInsertionSortResult, theQuickSortResult) {
+buildChart = function(theID, theTitle, theInsertionSortResult, theSelectionSortResult, theBubbleSortResult, theMergeSortResult, theQuickSortResult) {
     var chart = new CanvasJS.Chart(theID, {
         title: {
             text: theTitle,
@@ -28,7 +28,7 @@ buildChart = function(theID, theTitle, theInsertionSortResult, theQuickSortResul
             type: "spline",
             showInLegend: true,
             lineThickness: 2,
-            name: "Insertion Sort",
+            name: "Insertion",
             markerType: "square",
             color: "#F08080",
             dataPoints: theInsertionSortResult
@@ -37,7 +37,38 @@ buildChart = function(theID, theTitle, theInsertionSortResult, theQuickSortResul
         {
             type: "spline",
             showInLegend: true,
-            name: "Quick Sort",
+            lineThickness: 2,
+            name: "Selection",
+            markerType: "square",
+            color: "#80F080",
+            dataPoints: theSelectionSortResult
+
+        },
+        {
+            type: "spline",
+            showInLegend: true,
+            lineThickness: 2,
+            name: "Insertion",
+            markerType: "square",
+            color: "#8080F0",
+            dataPoints: theBubbleSortResult
+
+        },
+        {
+            type: "spline",
+            showInLegend: true,
+            lineThickness: 2,
+            name: "Merge",
+            markerType: "square",
+            color: "#880015",
+            dataPoints: theMergeSortResult
+
+        },
+
+        {
+            type: "spline",
+            showInLegend: true,
+            name: "Quick",
             color: "#20B2AA",
             lineThickness: 2,
 

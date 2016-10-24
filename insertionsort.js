@@ -29,8 +29,8 @@ generateSortedData = function(n) {
 };
 
 insertionSort = function(data, n) {
-  var delta, i, j, k, now, ref, starting, value;
-  starting = (new Date()).getTime();
+  var i, j, k, now, ref, starting, value;
+  starting = window.performance.now();
   for (i = k = 1, ref = n - 1; 1 <= ref ? k <= ref : k >= ref; i = 1 <= ref ? ++k : --k) {
     j = i - 1;
     value = data[i];
@@ -39,10 +39,9 @@ insertionSort = function(data, n) {
       j = j - 1;
     }
     data[j + 1] = value;
-    now = (new Date()).getTime();
-    delta = now - starting;
   }
-  return delta;
+  now = window.performance.now();
+  return now - starting;
 };
 
 show = function(data, time1, time2, n) {
