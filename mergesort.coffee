@@ -1,13 +1,24 @@
+class MergeSort
+    constructor : (@data) ->
+        @time = 0
+        @space = 0
+        return
 
-mergeSort = (data) ->
-    if data.length == 1
-        return data
-    rv = []
-    midpoint = Math.floor data.length / 2
-    left = mergeSort data.slice 0, midpoint
-    right = mergeSort data.slice midpoint
+    doSort : ->
+        starting = window.performance.now()
+        @data = @merge(@data)
+        @time = window.performance.now() - starting
+        return
 
-    while left.length and right.length
-        rv.push(if left[0] < right[0] then left.shift() else right.shift())
+    merge : (data) ->
+        return data if data.length is 1
+        @space = @space + data.length
+        rv = []
+        midpoint = Math.floor data.length / 2
+        left = @merge data.slice 0, midpoint
+        right = @merge data.slice midpoint
 
-    rv.concat(left).concat(right)
+        while left.length and right.length
+            rv.push(if left[0] < right[0] then left.shift() else right.shift())
+
+        rv.concat(left).concat(right)

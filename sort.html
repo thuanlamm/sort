@@ -10,114 +10,122 @@
                 var bubbleSortResult = [];
                 var mergeSortResult = [];
                 var quickSortResult = [];
-                var n = 3000;
+                var n = 5001;
                 var delta;
                 var step = 200;
+                var gen = new GenerateData();
 
-                inputData = generateRandomData(n);
-                //inputData = generateReversedData(n);
-                //inputData = generateSortedData(n);
+                inputData = gen.random(n);
+
                 insertionSortResult = [];
                 selectionSortResult = [];
                 bubbleSortResult = [];
                 mergeSortResult = [];
                 quickSortResult = [];
 
-                for (i = 0; i <= n; i+=step) {
-                    inputData2 = inputData.slice();
-                    delta = insertionSort(inputData2, i);
-                    insertionSortResult.push({ x: i, y: delta});
+                for (i = 1; i <= n; i+=step) {
+                    inputData2 = inputData.slice(0, i);
+                    var insertion = new InsertionSort(inputData2);
+                    insertion.doSort();
+                    insertionSortResult.push({ x: i, y: insertion.time});
 
-                    inputData2 = inputData.slice();
-                    delta = selectionSort(inputData2, i);
-                    selectionSortResult.push({ x: i, y: delta});
+                    inputData2 = inputData.slice(0, i);
+                    var selection = new SelectionSort(inputData2);
+                    selection.doSort();
+                    selectionSortResult.push({ x: i, y: selection.time});
 
-                    inputData2 = inputData.slice();
-                    delta = bubbleSort(inputData2, i);
-                    bubbleSortResult.push({ x: i, y: delta});
+                    inputData2 = inputData.slice(0, i);
+                    var bubble = new BubbleSort(inputData2);
+                    bubble.doSort();
+                    bubbleSortResult.push({ x: i, y: bubble.time})
 
-                    inputData2 = inputData.slice();
-                    starting = window.performance.now();
-                    inputData2 = mergeSort(inputData2, i);
-                    endding = window.performance.now();
-                    mergeSortResult.push({ x: i, y: endding - starting});
+                    inputData2 = inputData.slice(0, i);
+                    var merge = new MergeSort(inputData2);
+                    merge.doSort();
+                    mergeSortResult.push({ x: i, y: merge.time});
 
-                    inputData2 = inputData.slice();
-                    delta2 = quickSort(inputData2, i);
-                    quickSortResult.push({ x: i, y: delta2});
+                    inputData2 = inputData.slice(0, i);
+                    var quick = new QuickSort(inputData2);
+                    quick.doSort();
+                    quickSortResult.push({ x: i, y: quick.time});
 
                 }
 
                 var chart = new buildChart("RunningTimeRandomData", "Running Time w/ Random Data", insertionSortResult, selectionSortResult, bubbleSortResult, mergeSortResult, quickSortResult);
                 chart.render();
 
-                //inputData = generateRandomData(n);
-                inputData = generateReversedData(n);
-                //inputData = generateSortedData(n);
+
+                inputData = gen.reversed(n);
+
                 insertionSortResult = [];
                 selectionSortResult = [];
                 bubbleSortResult = [];
                 mergeSortResult = [];
                 quickSortResult = [];
 
-                for (i = 0; i <= n; i+=step) {
-                    inputData2 = inputData.slice();
-                    delta = insertionSort(inputData2, i);
-                    insertionSortResult.push({ x: i, y: delta});
+                for (i = 1; i <= n; i+=step) {
+                    inputData2 = inputData.slice(0, i);
+                    var insertion = new InsertionSort(inputData2);
+                    insertion.doSort();
+                    insertionSortResult.push({ x: i, y: insertion.time});
 
-                    inputData2 = inputData.slice();
-                    delta = selectionSort(inputData2, i);
-                    selectionSortResult.push({ x: i, y: delta});
+                    inputData2 = inputData.slice(0, i);
+                    var selection = new SelectionSort(inputData2);
+                    selection.doSort();
+                    selectionSortResult.push({ x: i, y: selection.time});
 
-                    inputData2 = inputData.slice();
-                    delta = bubbleSort(inputData2, i);
-                    bubbleSortResult.push({ x: i, y: delta});
+                    inputData2 = inputData.slice(0, i);
+                    var bubble = new BubbleSort(inputData2);
+                    bubble.doSort();
+                    bubbleSortResult.push({ x: i, y: bubble.time})
 
-                    inputData2 = inputData.slice();
-                    starting = window.performance.now();
-                    inputData2 = mergeSort(inputData2, i);
-                    endding = window.performance.now();
-                    mergeSortResult.push({ x: i, y: endding - starting});
+                    inputData2 = inputData.slice(0, i);
+                    var merge = new MergeSort(inputData2);
+                    merge.doSort();
+                    mergeSortResult.push({ x: i, y: merge.time});
 
-                    inputData2 = inputData.slice();
-                    delta2 = quickSort(inputData2, i);
-                    quickSortResult.push({ x: i, y: delta2});
+                    inputData2 = inputData.slice(0, i);
+                    var quick = new QuickSort(inputData2);
+                    quick.doSort();
+                    quickSortResult.push({ x: i, y: quick.time});
                 }
 
                 var chart = new buildChart("RunningTimeReversedData", "Running Time w/ Reversed Data", insertionSortResult, selectionSortResult, bubbleSortResult, mergeSortResult, quickSortResult);
                 chart.render();
 
-                //inputData = generateRandomData(n);
-                //inputData = generateReversedData(n);
-                inputData = generateSortedData(n);
+                inputData = gen.sorted(n);
+
                 insertionSortResult = [];
                 selectionSortResult = [];
                 bubbleSortResult = [];
                 mergeSortResult = [];
                 quickSortResult = [];
 
-                for (i = 0; i <= n; i+=step) {
-                    inputData2 = inputData.slice();
-                    delta = insertionSort(inputData2, i);
-                    insertionSortResult.push({ x: i, y: delta});
+                for (i = 1; i <= n; i+=step) {
+                    inputData2 = inputData.slice(0, i);
+                    var insertion = new InsertionSort(inputData2);
+                    insertion.doSort();
+                    insertionSortResult.push({ x: i, y: insertion.time});
 
-                    inputData2 = inputData.slice();
-                    delta = selectionSort(inputData2, i);
-                    selectionSortResult.push({ x: i, y: delta});
+                    inputData2 = inputData.slice(0, i);
+                    var selection = new SelectionSort(inputData2);
+                    selection.doSort();
+                    selectionSortResult.push({ x: i, y: selection.time});
 
-                    inputData2 = inputData.slice();
-                    delta = bubbleSort(inputData2, i);
-                    bubbleSortResult.push({ x: i, y: delta});
+                    inputData2 = inputData.slice(0, i);
+                    var bubble = new BubbleSort(inputData2);
+                    bubble.doSort();
+                    bubbleSortResult.push({ x: i, y: bubble.time})
 
-                    inputData2 = inputData.slice();
-                    starting = window.performance.now();
-                    inputData2 = mergeSort(inputData2, i);
-                    endding = window.performance.now();
-                    mergeSortResult.push({ x: i, y: endding - starting});
+                    inputData2 = inputData.slice(0, i);
+                    var merge = new MergeSort(inputData2);
+                    merge.doSort();
+                    mergeSortResult.push({ x: i, y: merge.time});
 
-                    inputData2 = inputData.slice();
-                    delta2 = quickSort(inputData2, i);
-                    quickSortResult.push({ x: i, y: delta2});
+                    inputData2 = inputData.slice(0, i);
+                    var quick = new QuickSort(inputData2);
+                    quick.doSort();
+                    quickSortResult.push({ x: i, y: quick.time});
                 }
 
                 var chart = new buildChart("RunningTimeSortedData", "Running Time w/ Sorted Data", insertionSortResult, selectionSortResult, bubbleSortResult, mergeSortResult, quickSortResult);
@@ -125,6 +133,7 @@
 
             }
         </script>
+        <script type="text/javascript" src="./generatedata.js"></script>
         <script type="text/javascript" src="./insertionsort.js"></script>
         <script type="text/javascript" src="./selectionsort.js"></script>
         <script type="text/javascript" src="./bubblesort.js"></script>
