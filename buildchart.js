@@ -48,7 +48,7 @@ buildChart = function(theID, theTitle, theInsertionSortResult, theSelectionSortR
             type: "spline",
             showInLegend: true,
             lineThickness: 2,
-            name: "Insertion",
+            name: "Bubble",
             markerType: "square",
             color: "#8080F0",
             dataPoints: theBubbleSortResult
