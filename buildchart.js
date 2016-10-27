@@ -1,4 +1,4 @@
-buildChart = function(theID, theTitle, theInsertionSortResult, theSelectionSortResult, theBubbleSortResult, theMergeSortResult, theQuickSortResult) {
+buildChart = function(theID, theTitle, xa, ya, theInsertionSortResult, theSelectionSortResult, theBubbleSortResult, theMergeSortResult, theQuickSortResult) {
     var chart = new CanvasJS.Chart(theID, {
         title: {
             text: theTitle,
@@ -8,7 +8,7 @@ buildChart = function(theID, theTitle, theInsertionSortResult, theSelectionSortR
         axisX: {
             gridColor: "Silver",
             tickColor: "silver",
-            valueFormatString: 'n=' + "0"
+            valueFormatString: xa
         },
         toolTip: {
             shared: true
@@ -17,7 +17,7 @@ buildChart = function(theID, theTitle, theInsertionSortResult, theSelectionSortR
         axisY: {
             gridColor: "Silver",
             tickColor: "silver",
-            valueFormatString: "0" + 'ms'
+            valueFormatString: ya
         },
         legend: {
             verticalAlign: "center",
@@ -39,7 +39,7 @@ buildChart = function(theID, theTitle, theInsertionSortResult, theSelectionSortR
             showInLegend: true,
             lineThickness: 2,
             name: "Selection",
-            markerType: "square",
+            markerType: "triangle",
             color: "#80F080",
             dataPoints: theSelectionSortResult
 
@@ -49,7 +49,7 @@ buildChart = function(theID, theTitle, theInsertionSortResult, theSelectionSortR
             showInLegend: true,
             lineThickness: 2,
             name: "Bubble",
-            markerType: "square",
+            markerType: "cross",
             color: "#8080F0",
             dataPoints: theBubbleSortResult
 
@@ -59,7 +59,7 @@ buildChart = function(theID, theTitle, theInsertionSortResult, theSelectionSortR
             showInLegend: true,
             lineThickness: 2,
             name: "Merge",
-            markerType: "square",
+            markerType: "circle",
             color: "#880015",
             dataPoints: theMergeSortResult
 
@@ -68,10 +68,10 @@ buildChart = function(theID, theTitle, theInsertionSortResult, theSelectionSortR
         {
             type: "spline",
             showInLegend: true,
-            name: "Quick",
-            color: "#20B2AA",
             lineThickness: 2,
-
+            name: "Quick",
+            markerType: "none",
+            color: "#20B2AA",
             dataPoints: theQuickSortResult
         }
         ],

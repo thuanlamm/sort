@@ -5,30 +5,54 @@ GenerateData = (function() {
   function GenerateData() {}
 
   GenerateData.prototype.random = function(n) {
-    var i, j, ref, rv;
+    var i, k, ref, rv;
     rv = [];
-    for (i = j = 1, ref = n; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
+    for (i = k = 1, ref = n; 1 <= ref ? k <= ref : k >= ref; i = 1 <= ref ? ++k : --k) {
       rv.push(Math.floor(Math.random() * n));
     }
     return rv;
   };
 
   GenerateData.prototype.reversed = function(n) {
-    var i, j, ref, rv;
+    var i, k, ref, rv;
     rv = [];
-    for (i = j = 1, ref = n; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
+    for (i = k = 1, ref = n; 1 <= ref ? k <= ref : k >= ref; i = 1 <= ref ? ++k : --k) {
       rv.push(n + Math.floor(Math.random() * (n / 10)) - Math.floor(n / 20));
     }
     return rv;
   };
 
   GenerateData.prototype.sorted = function(n) {
-    var i, j, ref, rv;
+    var i, k, ref, rv;
     rv = [];
-    for (i = j = 1, ref = n; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
+    for (i = k = 1, ref = n; 1 <= ref ? k <= ref : k >= ref; i = 1 <= ref ? ++k : --k) {
       rv.push(i + Math.floor(Math.random() * (n / 10)) - Math.floor(n / 20));
     }
     return rv;
+  };
+
+  GenerateData.prototype.swap = function(l, i, j) {
+    var temp;
+    temp = l[i];
+    l[i] = l[j];
+    return l[j] = temp;
+  };
+
+  GenerateData.prototype.degree = function(l, n, d) {
+    var i, j, k, m, o, ref, ref1, ref2, ref3;
+    for (i = k = 0, ref = n - 1; 0 <= ref ? k <= ref : k >= ref; i = 0 <= ref ? ++k : --k) {
+      for (j = m = ref1 = i + 1, ref2 = n - 1; ref1 <= ref2 ? m <= ref2 : m >= ref2; j = ref1 <= ref2 ? ++m : --m) {
+        if (l[i] > l[j]) {
+          this.swap(l, i, j);
+        }
+      }
+    }
+    for (i = o = 0, ref3 = n / 2; 0 <= ref3 ? o <= ref3 : o >= ref3; i = 0 <= ref3 ? ++o : --o) {
+      if (Math.random() > d) {
+        this.swap(l, i, n - 1 - i);
+      }
+    }
+    return l;
   };
 
   return GenerateData;

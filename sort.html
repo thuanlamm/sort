@@ -5,131 +5,103 @@
             window.onload = function () {
                 var inputData = [];
                 var inputData2 = [];
-                var insertionSortResult = [];
-                var selectionSortResult = [];
-                var bubbleSortResult = [];
-                var mergeSortResult = [];
-                var quickSortResult = [];
-                var n = 5001;
+                var insertionSortResult = new Array(16);
+                var selectionSortResult = new Array(16);
+                var bubbleSortResult = new Array(16);
+                var mergeSortResult = new Array(16);
+                var quickSortResult = new Array(16);
+                var n = 3001;
                 var delta;
-                var step = 200;
+                var step = 100;
                 var gen = new GenerateData();
-
                 inputData = gen.random(n);
 
-                insertionSortResult = [];
-                selectionSortResult = [];
-                bubbleSortResult = [];
-                mergeSortResult = [];
-                quickSortResult = [];
+                for (i = 0; i < 16; i++) {
+                    insertionSortResult[i] = [];
+                    selectionSortResult[i] = [];
+                    bubbleSortResult[i] = [];
+                    mergeSortResult[i] = [];
+                    quickSortResult[i] = [];
+                }
+
 
                 for (i = 1; i <= n; i+=step) {
                     inputData2 = inputData.slice(0, i);
                     var insertion = new InsertionSort(inputData2);
                     insertion.doSort();
-                    insertionSortResult.push({ x: i, y: insertion.time});
+                    insertionSortResult[0].push({ x: i, y: insertion.time});
+                    insertionSortResult[1].push({ x: i, y: insertion.space});
 
                     inputData2 = inputData.slice(0, i);
                     var selection = new SelectionSort(inputData2);
                     selection.doSort();
-                    selectionSortResult.push({ x: i, y: selection.time});
+                    selectionSortResult[0].push({ x: i, y: selection.time});
+                    selectionSortResult[1].push({ x: i, y: selection.space});
 
                     inputData2 = inputData.slice(0, i);
                     var bubble = new BubbleSort(inputData2);
                     bubble.doSort();
-                    bubbleSortResult.push({ x: i, y: bubble.time})
+                    bubbleSortResult[0].push({ x: i, y: bubble.time});
+                    bubbleSortResult[1].push({ x: i, y: bubble.space});
 
                     inputData2 = inputData.slice(0, i);
                     var merge = new MergeSort(inputData2);
                     merge.doSort();
-                    mergeSortResult.push({ x: i, y: merge.time});
+                    mergeSortResult[0].push({ x: i, y: merge.time});
+                    mergeSortResult[1].push({ x: i, y: merge.space});
 
                     inputData2 = inputData.slice(0, i);
                     var quick = new QuickSort(inputData2);
                     quick.doSort();
-                    quickSortResult.push({ x: i, y: quick.time});
-
+                    quickSortResult[0].push({ x: i, y: quick.time});
+                    quickSortResult[1].push({ x: i, y: quick.space});
                 }
 
-                var chart = new buildChart("RunningTimeRandomData", "Running Time w/ Random Data", insertionSortResult, selectionSortResult, bubbleSortResult, mergeSortResult, quickSortResult);
-                chart.render();
+                for (i = 0; i <= 1; i+=.2) {
+                    degreed = gen.degree(inputData,n,i);
 
-
-                inputData = gen.reversed(n);
-
-                insertionSortResult = [];
-                selectionSortResult = [];
-                bubbleSortResult = [];
-                mergeSortResult = [];
-                quickSortResult = [];
-
-                for (i = 1; i <= n; i+=step) {
-                    inputData2 = inputData.slice(0, i);
+                    inputData2 = degreed.slice();
                     var insertion = new InsertionSort(inputData2);
                     insertion.doSort();
-                    insertionSortResult.push({ x: i, y: insertion.time});
+                    insertionSortResult[2].push({ x: i, y: insertion.time});
+                    insertionSortResult[3].push({ x: i, y: insertion.space});
 
-                    inputData2 = inputData.slice(0, i);
+                    inputData2 = degreed.slice();
                     var selection = new SelectionSort(inputData2);
                     selection.doSort();
-                    selectionSortResult.push({ x: i, y: selection.time});
+                    selectionSortResult[2].push({ x: i, y: selection.time});
+                    selectionSortResult[3].push({ x: i, y: selection.space});
 
-                    inputData2 = inputData.slice(0, i);
+                    inputData2 = degreed.slice();
                     var bubble = new BubbleSort(inputData2);
                     bubble.doSort();
-                    bubbleSortResult.push({ x: i, y: bubble.time})
+                    bubbleSortResult[2].push({ x: i, y: bubble.time});
+                    bubbleSortResult[3].push({ x: i, y: bubble.space});
 
-                    inputData2 = inputData.slice(0, i);
+                    inputData2 = degreed.slice();
                     var merge = new MergeSort(inputData2);
                     merge.doSort();
-                    mergeSortResult.push({ x: i, y: merge.time});
+                    mergeSortResult[2].push({ x: i, y: merge.time});
+                    mergeSortResult[3].push({ x: i, y: merge.space});
 
-                    inputData2 = inputData.slice(0, i);
+                    inputData2 = degreed.slice();
                     var quick = new QuickSort(inputData2);
                     quick.doSort();
-                    quickSortResult.push({ x: i, y: quick.time});
+                    quickSortResult[2].push({ x: i, y: quick.time});
+                    quickSortResult[3].push({ x: i, y: quick.space});
                 }
 
-                var chart = new buildChart("RunningTimeReversedData", "Running Time w/ Reversed Data", insertionSortResult, selectionSortResult, bubbleSortResult, mergeSortResult, quickSortResult);
+                var chart = new buildChart("RunningTimeRandomData", "Running Time w/ Random Data", "n=0", "0 ms", insertionSortResult[0], selectionSortResult[0], bubbleSortResult[0], mergeSortResult[0], quickSortResult[0]);
                 chart.render();
 
-                inputData = gen.sorted(n);
-
-                insertionSortResult = [];
-                selectionSortResult = [];
-                bubbleSortResult = [];
-                mergeSortResult = [];
-                quickSortResult = [];
-
-                for (i = 1; i <= n; i+=step) {
-                    inputData2 = inputData.slice(0, i);
-                    var insertion = new InsertionSort(inputData2);
-                    insertion.doSort();
-                    insertionSortResult.push({ x: i, y: insertion.time});
-
-                    inputData2 = inputData.slice(0, i);
-                    var selection = new SelectionSort(inputData2);
-                    selection.doSort();
-                    selectionSortResult.push({ x: i, y: selection.time});
-
-                    inputData2 = inputData.slice(0, i);
-                    var bubble = new BubbleSort(inputData2);
-                    bubble.doSort();
-                    bubbleSortResult.push({ x: i, y: bubble.time})
-
-                    inputData2 = inputData.slice(0, i);
-                    var merge = new MergeSort(inputData2);
-                    merge.doSort();
-                    mergeSortResult.push({ x: i, y: merge.time});
-
-                    inputData2 = inputData.slice(0, i);
-                    var quick = new QuickSort(inputData2);
-                    quick.doSort();
-                    quickSortResult.push({ x: i, y: quick.time});
-                }
-
-                var chart = new buildChart("RunningTimeSortedData", "Running Time w/ Sorted Data", insertionSortResult, selectionSortResult, bubbleSortResult, mergeSortResult, quickSortResult);
+                var chart = new buildChart("SpaceComplexityRandomData", "Space complexity w/ Random Data", "n=0", "0", insertionSortResult[1], selectionSortResult[1], bubbleSortResult[1], mergeSortResult[1], quickSortResult[1]);
                 chart.render();
+
+                var chart = new buildChart("RunningTimeDegreedData", "Running Time w/ Degreed Data", "0%", "0 ms", insertionSortResult[2], selectionSortResult[2], bubbleSortResult[2], mergeSortResult[2], quickSortResult[2]);
+                chart.render();
+
+                var chart = new buildChart("SpaceComplexityDegreedData", "Space complexity w/ Degreed Data", "0%", "0", insertionSortResult[3], selectionSortResult[3], bubbleSortResult[3], mergeSortResult[3], quickSortResult[3]);
+                chart.render()
 
             }
         </script>
@@ -149,9 +121,10 @@
     <body>
 
         <div id="RunningTimeRandomData" style="width: 45%; height: 300px;display: inline-block;"></div>
-        <div id="RunningTimeReversedData" style="width: 45%; height: 300px;display: inline-block;"></div>
+        <div id="SpaceComplexityRandomData" style="width: 45%; height: 300px;display: inline-block;"></div>
         <br/>
-        <div id="RunningTimeSortedData" style="width: 45%; height: 300px;display: inline-block;"></div>
+        <div id="RunningTimeDegreedData" style="width: 45%; height: 300px;display: inline-block;"></div>
+        <div id="SpaceComplexityDegreedData" style="width: 45%; height: 300px;display: inline-block;"></div>
 
     </body>
 </html>
