@@ -21,18 +21,8 @@ QuickSort = (function() {
     var iPivot;
     if (iStart < iEnd) {
       iPivot = this.quickSortPartition(iStart, iEnd);
-      this.current += this.iPivot - iStart;
-      if (this.current > this.space) {
-        this.space = this.current;
-      }
       this.doQuickSort(data, iStart, iPivot - 1);
-      this.current -= this.iPivot - iStart;
-      this.current += iEnd - this.iPivot;
-      if (this.current > this.space) {
-        this.space = this.current;
-      }
-      this.doQuickSort(data, iPivot + 1, iEnd);
-      return this.current -= iEnd - this.iPivot;
+      return this.doQuickSort(data, iPivot + 1, iEnd);
     }
   };
 
