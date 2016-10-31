@@ -91,3 +91,56 @@ buildChart = function(theID, theTitle, xa, ya, theInsertionSortResult, theSelect
     return chart;
 };
 
+buildSampleChart = function(theID, theTitle, xa, ya, theData) {
+    var chart = new CanvasJS.Chart(theID, {
+        title: {
+            text: theTitle,
+            fontSize: 30
+        },
+        animationEnabled: true,
+        axisX: {
+            gridColor: "Silver",
+            tickColor: "silver",
+            valueFormatString: xa
+        },
+        toolTip: {
+            shared: true
+        },
+        theme: "theme2",
+        axisY: {
+            gridColor: "Silver",
+            tickColor: "silver",
+            valueFormatString: ya
+        },
+        legend: {
+            verticalAlign: "center",
+            horizontalAlign: "right"
+        },
+        data: [
+        {
+            type: "spline",
+            showInLegend: true,
+            lineThickness: 2,
+            name: "Data",
+            markerType: "square",
+            color: "#F08080",
+            dataPoints: theData
+
+        }
+        ],
+        legend: {
+            cursor: "pointer",
+            itemclick: function (e) {
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                }
+                else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+        }
+    });
+    return chart;
+};
+
