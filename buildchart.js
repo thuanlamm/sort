@@ -91,7 +91,7 @@ buildChart = function(theID, theTitle, xa, ya, theInsertionSortResult, theSelect
     return chart;
 };
 
-buildSampleChart = function(theID, theTitle, xa, ya, theData) {
+buildSampleChart = function(theID, theType, theTitle, xa, ya, theData) {
     var chart = new CanvasJS.Chart(theID, {
         title: {
             text: theTitle,
@@ -118,12 +118,11 @@ buildSampleChart = function(theID, theTitle, xa, ya, theData) {
         },
         data: [
         {
-            type: "spline",
+            type: theType,
             showInLegend: true,
-            lineThickness: 2,
+            lineThickness: 1,
             name: "Data",
-            markerType: "square",
-            color: "#F08080",
+            markerType: "circle",
             dataPoints: theData
 
         }
