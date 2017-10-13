@@ -6,8 +6,10 @@ class MergeSort
 
     doSort : ->
         starting = window.performance.now()
-        @data = @merge(@data)
-        @time = window.performance.now() - starting
+        for t in [1..5]
+            temp = @merge(@data)
+        @time = (window.performance.now() - starting) / 5
+        @data = temp
         return
 
     merge : (data) ->

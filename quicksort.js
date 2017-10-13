@@ -11,10 +11,14 @@ QuickSort = (function() {
   }
 
   QuickSort.prototype.doSort = function() {
-    var starting;
+    var k, starting, t, temp;
     starting = window.performance.now();
-    this.doQuickSort(this.data, 0, this.data.length - 1);
-    return this.time = window.performance.now() - starting;
+    for (t = k = 1; k <= 5; t = ++k) {
+      temp = this.data.slice();
+      this.doQuickSort(temp, 0, temp.length - 1);
+    }
+    this.time = (window.performance.now() - starting) / 5;
+    return this.data = temp;
   };
 
   QuickSort.prototype.doQuickSort = function(data, iStart, iEnd) {

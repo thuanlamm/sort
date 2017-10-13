@@ -7,11 +7,14 @@ class InsertionSort
     doSort : ->
         @space = @data.length
         starting = window.performance.now()
-        for i in [1..@data.length-1]
-            j = i - 1
-            value = @data[i]
-            while j >= 0 && value < @data[j]
-                @data[j+1] = @data[j]
-                j = j-1
-            @data[j+1]=value
-        @time = window.performance.now() - starting
+        for t in [1..5]
+            temp = @data.slice()
+            for i in [1..temp.length-1]
+                j = i - 1
+                value = temp[i]
+                while j >= 0 && value < temp[j]
+                    temp[j+1] = temp[j]
+                    j = j-1
+                temp[j+1]=value
+        @time = (window.performance.now() - starting) / 5
+        @data = temp

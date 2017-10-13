@@ -8,13 +8,16 @@ class SelectionSort
         @space = @data.length
         starting = window.performance.now()
         n = @data.length
-        for i in [1..n-1]
-            min = i
-            for j in [i+1..n-1]
-                if @data[j] < @data[min]
-                    min = j
-            if i != min
-                temp = @data[i]
-                @data[i] = @data[min]
-                @data[min] = temp
-        @time = window.performance.now() - starting
+        for t in [1..5]
+            temp = @data.slice()
+            for i in [1..n-1]
+                min = i
+                for j in [i+1..n-1]
+                    if temp[j] < temp[min]
+                        min = j
+                if i != min
+                    tmp = temp[i]
+                    temp[i] = temp[min]
+                    temp[min] = tmp
+        @time = (window.performance.now() - starting) / 5
+        @data = temp

@@ -10,24 +10,28 @@ SelectionSort = (function() {
   }
 
   SelectionSort.prototype.doSort = function() {
-    var i, j, k, l, min, n, ref, ref1, ref2, starting, temp;
+    var i, j, k, l, m, min, n, ref, ref1, ref2, starting, t, temp, tmp;
     this.space = this.data.length;
     starting = window.performance.now();
     n = this.data.length;
-    for (i = k = 1, ref = n - 1; 1 <= ref ? k <= ref : k >= ref; i = 1 <= ref ? ++k : --k) {
-      min = i;
-      for (j = l = ref1 = i + 1, ref2 = n - 1; ref1 <= ref2 ? l <= ref2 : l >= ref2; j = ref1 <= ref2 ? ++l : --l) {
-        if (this.data[j] < this.data[min]) {
-          min = j;
+    for (t = k = 1; k <= 5; t = ++k) {
+      temp = this.data.slice();
+      for (i = l = 1, ref = n - 1; 1 <= ref ? l <= ref : l >= ref; i = 1 <= ref ? ++l : --l) {
+        min = i;
+        for (j = m = ref1 = i + 1, ref2 = n - 1; ref1 <= ref2 ? m <= ref2 : m >= ref2; j = ref1 <= ref2 ? ++m : --m) {
+          if (temp[j] < temp[min]) {
+            min = j;
+          }
+        }
+        if (i !== min) {
+          tmp = temp[i];
+          temp[i] = temp[min];
+          temp[min] = tmp;
         }
       }
-      if (i !== min) {
-        temp = this.data[i];
-        this.data[i] = this.data[min];
-        this.data[min] = temp;
-      }
     }
-    return this.time = window.performance.now() - starting;
+    this.time = (window.performance.now() - starting) / 5;
+    return this.data = temp;
   };
 
   return SelectionSort;

@@ -7,8 +7,11 @@ class QuickSort
 
     doSort : () ->
         starting = window.performance.now()
-        @doQuickSort @data, 0, @data.length - 1
-        @time = window.performance.now() - starting
+        for t in [1..5]
+            temp = @data.slice()
+            @doQuickSort temp, 0, temp.length - 1
+        @time = (window.performance.now() - starting) / 5
+        @data = temp
 
     doQuickSort : (data, iStart, iEnd) ->
         if iStart < iEnd

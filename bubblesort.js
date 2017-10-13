@@ -10,20 +10,24 @@ BubbleSort = (function() {
   }
 
   BubbleSort.prototype.doSort = function() {
-    var i, j, k, l, n, ref, ref1, starting, tmp;
+    var i, j, k, l, m, n, ref, ref1, starting, t, temp, tmp;
     this.space = this.data.length;
     starting = window.performance.now();
     n = this.data.length;
-    for (i = k = ref = n - 1; k >= 0; i = k += -1) {
-      for (j = l = ref1 = n - i; l >= 1; j = l += -1) {
-        if (this.data[j] < this.data[j - 1]) {
-          tmp = this.data[j];
-          this.data[j] = this.data[j - 1];
-          this.data[j - 1] = tmp;
+    for (t = k = 1; k <= 5; t = ++k) {
+      temp = this.data.slice();
+      for (i = l = ref = n - 1; l >= 0; i = l += -1) {
+        for (j = m = ref1 = n - i; m >= 1; j = m += -1) {
+          if (temp[j] < temp[j - 1]) {
+            tmp = temp[j];
+            temp[j] = temp[j - 1];
+            temp[j - 1] = tmp;
+          }
         }
       }
     }
-    return this.time = window.performance.now() - starting;
+    this.time = (window.performance.now() - starting) / 5;
+    return this.data = temp;
   };
 
   return BubbleSort;

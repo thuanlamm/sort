@@ -10,10 +10,13 @@ MergeSort = (function() {
   }
 
   MergeSort.prototype.doSort = function() {
-    var starting;
+    var i, starting, t, temp;
     starting = window.performance.now();
-    this.data = this.merge(this.data);
-    this.time = window.performance.now() - starting;
+    for (t = i = 1; i <= 5; t = ++i) {
+      temp = this.merge(this.data);
+    }
+    this.time = (window.performance.now() - starting) / 5;
+    this.data = temp;
   };
 
   MergeSort.prototype.merge = function(data) {

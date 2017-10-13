@@ -10,19 +10,23 @@ InsertionSort = (function() {
   }
 
   InsertionSort.prototype.doSort = function() {
-    var i, j, k, ref, starting, value;
+    var i, j, k, l, ref, starting, t, temp, value;
     this.space = this.data.length;
     starting = window.performance.now();
-    for (i = k = 1, ref = this.data.length - 1; 1 <= ref ? k <= ref : k >= ref; i = 1 <= ref ? ++k : --k) {
-      j = i - 1;
-      value = this.data[i];
-      while (j >= 0 && value < this.data[j]) {
-        this.data[j + 1] = this.data[j];
-        j = j - 1;
+    for (t = k = 1; k <= 5; t = ++k) {
+      temp = this.data.slice();
+      for (i = l = 1, ref = temp.length - 1; 1 <= ref ? l <= ref : l >= ref; i = 1 <= ref ? ++l : --l) {
+        j = i - 1;
+        value = temp[i];
+        while (j >= 0 && value < temp[j]) {
+          temp[j + 1] = temp[j];
+          j = j - 1;
+        }
+        temp[j + 1] = value;
       }
-      this.data[j + 1] = value;
     }
-    return this.time = window.performance.now() - starting;
+    this.time = (window.performance.now() - starting) / 5;
+    return this.data = temp;
   };
 
   return InsertionSort;
