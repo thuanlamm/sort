@@ -3,13 +3,20 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Game Project Shell</title>
+    <title>598A - Visualization</title>
     <script type="text/javascript" src="./v.js"></script>
+    <script type="text/javascript" src="./v_bubblesort.js"></script>
+    <script type="text/javascript" src="./v_insertionsort.js"></script>
+    <script type="text/javascript" src="./v_mergesort.js"></script>
+    <script type="text/javascript" src="./v_selectionsort.js"></script>
 </head>
 <body>
-    <canvas id="canvas" tabindex="1" width="800" height="800" style="border: 1px solid brown; background: lightskyblue"></canvas>
-    <input id="Insertiion Sort" type="button" value="Insertion" onclick="Insertion();" />
-    <input id="Merge Sort" type="button" value="Merge" onclick="DoMerge();" />
-
+    <canvas id="canvas" tabindex="1" width="800" height="470" style="border: 1px solid brown; background: lightskyblue"></canvas>
+    <div>
+        <input id="Bubble Sort" type="button" value="BubbleSort" onclick="BubbleSort();" />
+        <input id="Insertion Sort" type="button" value="InsertionSort" onclick="InsertionSort();" />
+        <input id="Merge Sort" type="button" value="MergeSort" onclick="DoMergeSort();" />
+        <input id="Selection Sort" type="button" value="SelectionSort" onclick="SelectionSort();" />
+    </div>
 </body>
 </html>
