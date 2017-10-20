@@ -3,7 +3,7 @@ var canvas;
 var ctx;
 
 var command = '';
-var N = 7;
+var N = 17;
 var WAIT_TIME = 400;
 var WAIT_TIME_MERGE_SORT = 800;
 var WAIT_TIME_INSERTION_SORT = 150;

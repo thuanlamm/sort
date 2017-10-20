@@ -23,7 +23,12 @@ async function InsertionSort() {
         //drawing
         ctx.clearRect(0, 0, ctx.canvas.clientWidth, Y_BASE);
         for (k = 0; k < list.length; k++) {
-            ctx.fillStyle = (k == (i + 1) || k == j) ? CURRENT_COLOR : BAR_COLOR;
+            if (k <= i)
+                ctx.fillStyle = SORTED_COLOR;
+            else
+                ctx.fillStyle = BAR_COLOR;
+            if (k == (i + 1) || k == j)
+                ctx.fillStyle = CURRENT_COLOR;
             ctx.fillRect((k + LEFT_INDENT) * BAR_WIDTH, Y_BASE - list[k] * BAR_HEIGHT_FACTOR, BAR_WIDTH - BAR_GAP, list[k] * BAR_HEIGHT_FACTOR);
         }
         await Promise.all([Wait(WAIT_TIME_INSERTION_SORT)]);
@@ -40,7 +45,12 @@ async function InsertionSort() {
             //drawing
             ctx.clearRect(0, 0, ctx.canvas.clientWidth, Y_BASE);
             for (k = 0; k < list.length; k++) {
-                ctx.fillStyle = (k == (i + 1) || k == j) ? CURRENT_COLOR : BAR_COLOR;
+                if (k <= i)
+                    ctx.fillStyle = SORTED_COLOR;
+                else
+                    ctx.fillStyle = BAR_COLOR;
+                if (k == (i + 1) || k == j)
+                    ctx.fillStyle = CURRENT_COLOR;
                 ctx.fillRect((k + LEFT_INDENT) * BAR_WIDTH, Y_BASE - list[k] * BAR_HEIGHT_FACTOR, BAR_WIDTH - BAR_GAP, list[k] * BAR_HEIGHT_FACTOR);
             }
             await Promise.all([Wait(WAIT_TIME_INSERTION_SORT)]);

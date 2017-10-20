@@ -26,7 +26,9 @@ async function SelectionSort() {
             //drawing
             ctx.clearRect(0, 0, ctx.canvas.clientWidth, Y_BASE);
             for (k = 0; k < list.length; k++) {
-                if (k == minIndex)
+                if (k < i)
+                    ctx.fillStyle = SORTED_COLOR;
+                else if (k == minIndex)
                     ctx.fillStyle = BAR_MIN_COLOR;
                 else if (k == i || k == j)
                     ctx.fillStyle = CURRENT_COLOR;
