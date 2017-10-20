@@ -3,7 +3,7 @@ var canvas;
 var ctx;
 
 var command = '';
-var N = 17;
+var N = 7;
 var WAIT_TIME = 400;
 var WAIT_TIME_MERGE_SORT = 800;
 var WAIT_TIME_INSERTION_SORT = 150;
@@ -22,6 +22,7 @@ var CURRENT_COLOR = '#0000ff';
 var SORTED_COLOR = '#f0f0f0';
 var BAR_COLOR = '#606060'; //gray
 var BAR_MIN_COLOR = '#ff0000';
+var PIVOT_COLOR = '#ff0000';
 var TEXT_COLOR = '#ffffff';
 var BACKGROUND_COLOR = '#87CEFA'; //lightskyblue
 
@@ -33,6 +34,13 @@ function GenerateData() {
         i = Math.floor(Math.random() * 25) + 5 //from 5 to 25,
         list.push(i);
     }
+
+
+    list[0] = 6;
+    list[1] = 12;
+    list[2] = 17;
+    list[3] = 11;
+    list[4] = 9;
 }
 
 function Wait(ms) {
