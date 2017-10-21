@@ -14,7 +14,7 @@ async function BubbleSort() {
     ctx.font = "30px Arial";
     ctx.fillText("Bubble Sort", 100, Y_BASE_2 + 50);
     Draw(BAR_COLOR);
-    await Promise.all([Wait(WAIT_TIME_INSERTION_SORT)]);
+    await Promise.all([Wait(WAIT_TIME_LIST_SORT / speed)]);
 
     last = list.length;
     do {
@@ -29,7 +29,7 @@ async function BubbleSort() {
                 ctx.fillStyle = BAR_COLOR;
             ctx.fillRect((k + LEFT_INDENT) * BAR_WIDTH, Y_BASE - list[k] * BAR_HEIGHT_FACTOR, BAR_WIDTH - BAR_GAP, list[k] * BAR_HEIGHT_FACTOR);
         }
-        await Promise.all([Wait(WAIT_TIME_INSERTION_SORT)]);
+        await Promise.all([Wait(WAIT_TIME_LIST_SORT / speed)]);
 
         if (command != 'bubble') return;
         found = false;
@@ -50,7 +50,7 @@ async function BubbleSort() {
                     ctx.fillStyle = BAR_COLOR;
                 ctx.fillRect((k + LEFT_INDENT) * BAR_WIDTH, Y_BASE - list[k] * BAR_HEIGHT_FACTOR, BAR_WIDTH - BAR_GAP, list[k] * BAR_HEIGHT_FACTOR);
             }
-            await Promise.all([Wait(WAIT_TIME_INSERTION_SORT)]);
+            await Promise.all([Wait(WAIT_TIME_LIST_SORT / speed)]);
         }
         last--;
     } while (found);

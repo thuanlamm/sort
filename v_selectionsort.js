@@ -14,7 +14,7 @@ async function SelectionSort() {
     ctx.font = "30px Arial";
     ctx.fillText("Selection Sort", 100, Y_BASE_2 + 50);
     Draw(BAR_COLOR);
-    await Promise.all([Wait(WAIT_TIME_INSERTION_SORT)]);
+    await Promise.all([Wait(WAIT_TIME_LIST_SORT / speed)]);
 
     for (i = 0; i < list.length - 1; i++) {
         if (command != 'selection') return;
@@ -36,9 +36,7 @@ async function SelectionSort() {
                     ctx.fillStyle = BAR_COLOR;
                 ctx.fillRect((k + LEFT_INDENT) * BAR_WIDTH, Y_BASE - list[k] * BAR_HEIGHT_FACTOR, BAR_WIDTH - BAR_GAP, list[k] * BAR_HEIGHT_FACTOR);
             }
-            await Promise.all([Wait(WAIT_TIME_INSERTION_SORT)]);
-
-
+            await Promise.all([Wait(WAIT_TIME_LIST_SORT / speed)]);
         }
         if (minIndex != i)
             Swap(minIndex, i);

@@ -1,12 +1,13 @@
 var list = [];
 var canvas;
 var ctx;
-
+var speed = 2.0; //default value
 var command = '';
-var N = 7;
+
+var N = 17;
 var WAIT_TIME = 400;
 var WAIT_TIME_MERGE_SORT = 800;
-var WAIT_TIME_INSERTION_SORT = 150;
+var WAIT_TIME_LIST_SORT = 200;
 
 var BAR_WIDTH = 20;
 var BAR_GAP = 2;
@@ -26,21 +27,32 @@ var PIVOT_COLOR = '#ff0000';
 var TEXT_COLOR = '#ffffff';
 var BACKGROUND_COLOR = '#87CEFA'; //lightskyblue
 
+function Sorting() {
+    for (var i = 0; i < N; i++)
+        for (var j = i + 1; j < N; j++)
+            if (list[i] > list[j]) 
+                Swap(i, j);
+}
 
 function GenerateData() {
     var x, i;
     list = [];
     for (x = 0; x < N; x++) {  //random 50 numbers
-        i = Math.floor(Math.random() * 25) + 5 //from 5 to 25,
+        i = Math.floor(Math.random() * 30) + 5 //from 5 to 35,
         list.push(i);
     }
+    var e = document.getElementById("data");
+    var value = e.options[e.selectedIndex].value;
+    // var text = e.options[e.selectedIndex].text;
+    if (value != 'Random') {
+        Sorting();
+        if (value == 'SortedZA' || value == 'AlmostZA')
+            for (var i = 0; i < N / 2; i++)
+                Swap(i, N - 1 - i);
+        if (value == 'AlmostAZ' || value == 'AlmostZA')
+            Swap(Math.floor(N / 4), Math.floor(N / 4 * 3));
+    }
 
-
-    list[0] = 6;
-    list[1] = 12;
-    list[2] = 17;
-    list[3] = 11;
-    list[4] = 9;
 }
 
 function Wait(ms) {
@@ -58,4 +70,41 @@ function Swap(i, j) {
     var temp = list[i];
     list[i] = list[j];
     list[j] = temp;
+}
+
+function UpdateSize(val) {
+    N = val;
+    command = '';
+    canvas = document.getElementById('canvas');
+    ctx = canvas.getContext('2d')
+    ctx.fillStyle = BACKGROUND_COLOR;
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    GenerateData();
+    Draw(BAR_COLOR);
+    document.getElementById("size").innerHTML = "Size: " + val;
+}
+
+function UpdateSpeed(val) {
+    speed = val;
+    document.getElementById("speed").innerHTML = "Speed: " + val;
+}
+
+function OnLoad() {
+    command = '';
+    canvas = document.getElementById('canvas');
+    ctx = canvas.getContext('2d')
+    ctx.fillStyle = BACKGROUND_COLOR;
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    GenerateData();
+    Draw(BAR_COLOR);
+}
+
+function DataChanged() {
+    command = '';
+    canvas = document.getElementById('canvas');
+    ctx = canvas.getContext('2d')
+    ctx.fillStyle = BACKGROUND_COLOR;
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    GenerateData();
+    Draw(BAR_COLOR);
 }

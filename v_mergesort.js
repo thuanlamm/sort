@@ -51,7 +51,7 @@ async function MergeSort(data, first) {
     ctx.stroke();
 
     console.log('1');
-    await Promise.all([Wait(WAIT_TIME_MERGE_SORT)]);
+    await Promise.all([Wait(WAIT_TIME_MERGE_SORT / speed)]);
 
     left = await MergeSort(data.slice(0, midpoint), first);
     right = await MergeSort(data.slice(midpoint), first + midpoint);
@@ -79,7 +79,7 @@ async function MergeSort(data, first) {
     ctx.stroke();
 
     console.log('2');
-    await Promise.all([Wait(WAIT_TIME_MERGE_SORT / 4)]); //200 ms
+    await Promise.all([Wait(WAIT_TIME_MERGE_SORT / (speed * 4))]); //200 ms
 
     while (left.length || right.length) {
         if (command != 'merge') return;
@@ -123,7 +123,7 @@ async function MergeSort(data, first) {
         ctx.fillRect((first + LEFT_INDENT) * BAR_WIDTH, Y_BASE + LINE_WIDTH, midpoint * BAR_WIDTH - BAR_GAP, LINE_WIDTH);
         ctx.fillRect((first + midpoint + LEFT_INDENT) * BAR_WIDTH, Y_BASE + LINE_WIDTH, (data.length - midpoint) * BAR_WIDTH - BAR_GAP, LINE_WIDTH);
         console.log('3');
-        await Promise.all([Wait(WAIT_TIME_MERGE_SORT)]);
+        await Promise.all([Wait(WAIT_TIME_MERGE_SORT / speed)]);
     }
     for (i = 0; i < rv.length; i++) {
         list[first+i] = rv[i];
