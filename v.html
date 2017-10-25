@@ -10,34 +10,43 @@
     <script type="text/javascript" src="./v_mergesort.js"></script>
     <script type="text/javascript" src="./v_quicksort.js"></script>
     <script type="text/javascript" src="./v_selectionsort.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body onload="OnLoad();">
-    <canvas id="canvas" tabindex="1" width="800" height="470" style="border: 1px solid brown; background: lightskyblue"></canvas>
-    <div style="display: inline-block;">
-        <p id="speed" style="display: inline-block;">Speed: 1.0</p>
-        <input id="speedSlider" type ="range" min ="0.5" max="10.0" step ="0.1" value ="2.0" onchange="UpdateSpeed(this.value)"/>
-    </div>
-    <div style=" display: inline-block;">
-        <p id="size" style="display: inline-block;">Size: 17</p>
-        <input id="sizeSlider" type ="range" min ="7" max="30" step ="1" value="17" onchange="UpdateSize(this.value)"/>
+    <div style="margin-left: 10px; margin-top: 10px">
+        <canvas id="canvas" tabindex="1" width="1060" height="460" style="border: 1px solid brown; background: lightskyblue"></canvas>
     </div>
     <div>
-        <form method="data">
-        <select id="data" name="data" onchange="DataChanged()">
-                <option value="Random">Random</option>
-                <option value="AlmostAZ">Almost Sorted A-Z</option>
-                <option value="AlmostZA">Almost Sorted Z-A</option>              
-                <option value="SortedAZ">Sorted A-Z</option>
-                <option value="SortedZA">Sorted Z-A</option>
-        </select>
-</form>
-    </div>
-    <div>
-        <input id="Bubble Sort" type="button" value="Bubble Sort" onclick="BubbleSort();" />
-        <input id="Insertion Sort" type="button" value="Insertion Sort" onclick="InsertionSort();" />
-        <input id="Merge Sort" type="button" value="Merge Sort" onclick="DoMergeSort();" />
-        <input id="Quick Sort" type="button" value="Quick Sort" onclick="DoQuickSort();" />
-        <input id="Selection Sort" type="button" value="Selection Sort" onclick="SelectionSort();" />
+        <div class="well" style="display: inline-block; min-height: 92px; margin-top: 10px; margin-left: 10px; margin-bottom: 0px;">
+            <p id="speed">Speed: 1.0</p>
+            <input id="speedSlider" type ="range" min ="0.5" max="10.0" step ="0.1" value ="2.0" onchange="UpdateSpeed(this.value)"/>
+        </div>
+        <div class="well" style="display: inline-block; min-height: 92px; margin-top: 10px; margin-bottom: 0px;">
+            <p id="size">Size: 17</p>
+            <input id="sizeSlider" type ="range" min ="7" max="30" step ="1" value="17" onchange="UpdateSize(this.value)"/>
+        </div>
+        <div class="well" style="display: inline-block; min-height: 92px; margin-bottom: 0px;">
+            <p>Data</p>
+            <form method="data">
+                <select id="data" name="data" onchange="DataChanged()">
+                        <option value="Random">Random</option>
+                        <option value="AlmostAZ">Almost Sorted A-Z</option>
+                        <option value="AlmostZA">Almost Sorted Z-A</option>              
+                        <option value="SortedAZ">Sorted A-Z</option>
+                        <option value="SortedZA">Sorted Z-A</option>
+                </select>
+            </form>
+        </div> 
+        <div class="well" style="margin-left: 10px; width: 525px; display: inline-block; margin-bottom: 0px;">
+            <input id="Bubble Sort" type="button" value="Bubble Sort" onclick="BubbleSort();" />
+            <input id="Insertion Sort" type="button" value="Insertion Sort" onclick="InsertionSort();" />
+            <input id="Merge Sort" type="button" value="Merge Sort" onclick="DoMergeSort();" />
+            <input id="Quick Sort" type="button" value="Quick Sort" onclick="DoQuickSort();" />
+            <input id="Selection Sort" type="button" value="Selection Sort" onclick="SelectionSort();" />
+        </div>
     </div>
 </body>
 </html>

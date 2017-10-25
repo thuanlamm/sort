@@ -15,7 +15,7 @@ var BAR_HEIGHT_FACTOR = 5;
 
 var Y_BASE = 200;
 var Y_BASE_2 = 400;
-var LEFT_INDENT = 5;
+var LEFT_INDENT = 15;
 var LINE_WIDTH = 10;
 
 var IN_PROCESS_COLOR = '#50BED9';
@@ -79,6 +79,8 @@ function UpdateSize(val) {
     ctx = canvas.getContext('2d')
     ctx.fillStyle = BACKGROUND_COLOR;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    LEFT_INDENT = (ctx.canvas.width - N * BAR_WIDTH) / BAR_WIDTH / 2; //re-center
     GenerateData();
     Draw(BAR_COLOR);
     document.getElementById("size").innerHTML = "Size: " + val;
