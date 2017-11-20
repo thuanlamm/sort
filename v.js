@@ -119,6 +119,6 @@ function DataChanged() {
     ctx = canvas.getContext('2d')
     ctx.fillStyle = BACKGROUND_COLOR;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    //GenerateData();
+    GenerateData();
     Draw(BAR_COLOR);
 }
