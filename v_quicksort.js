@@ -17,7 +17,10 @@ function DrawQuickSort(start, midpoint, end) {
 
 async function DoQuickSort() {
     command = '';
-    GenerateData();
+    GetBackupData();
+
+
+
     positions = [];
     for (var i = 0; i < N; i++) {
         positions.push(0);

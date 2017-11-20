@@ -2,7 +2,8 @@ async function SelectionSort() {
     var i, j, k, minIndex;
 
     command = '';
-    GenerateData();
+    GetBackupData();
+    
     await Promise.all([Wait(WAIT_TIME)]); //wait 400ms before cleaning up
 
     command = 'selection';

@@ -1,6 +1,7 @@
 async function DoMergeSort() {
     command = '';
-    GenerateData();
+    GetBackupData();
+
     await Promise.all([Wait(WAIT_TIME)]); //wait 400ms before cleaning up
 
     command = 'merge';

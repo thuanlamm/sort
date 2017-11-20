@@ -1,9 +1,10 @@
 async function InsertionSort() {
     var i, j, k;
     var found = false;
-    command = '';
 
-    GenerateData();
+    command = '';
+    GetBackupData();
+
     await Promise.all([Wait(WAIT_TIME)]); //wait 400ms before cleaning up
     command = 'insertion';
 

@@ -1,4 +1,5 @@
 var list = [];
+var backup_list = [];
 var canvas;
 var ctx;
 var speed = 2.0; //default value
@@ -34,9 +35,18 @@ function Sorting() {
                 Swap(i, j);
 }
 
+function GetBackupData() {
+    var x;
+    list = [];
+    for (x = 0; x < N; x++) {
+        list.push(backup_list[x]);
+    }
+}
+
 function GenerateData() {
     var x, i;
     list = [];
+    backup_list = [];
     for (x = 0; x < N; x++) {  //random 50 numbers
         i = Math.floor(Math.random() * 30) + 5 //from 5 to 35,
         list.push(i);
@@ -52,7 +62,9 @@ function GenerateData() {
         if (value == 'AlmostAZ' || value == 'AlmostZA')
             Swap(Math.floor(N / 4), Math.floor(N / 4 * 3));
     }
-
+    for (x = 0; x < N; x++) {
+        backup_list.push(list[x]);
+    }
 }
 
 function Wait(ms) {
@@ -107,6 +119,6 @@ function DataChanged() {
     ctx = canvas.getContext('2d')
     ctx.fillStyle = BACKGROUND_COLOR;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    GenerateData();
+    //GenerateData();
     Draw(BAR_COLOR);
 }
